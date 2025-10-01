@@ -2,11 +2,7 @@ plugins {
     kotlin("jvm")
 }
 
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
-    }
-}
+// Use the running JDK; no explicit toolchain to avoid provisioning issues
 
 dependencies {
     testImplementation("junit:junit:4.13.2")
