@@ -23,7 +23,7 @@ jobs:
           gradle-version: 8.7
       - name: Install Android SDK components
         run: |
-          sdkmanager --install "platform-tools" "platforms;android-35" "build-tools;35.0.0"
+          sdkmanager --install "platform-tools" "platforms;android-35" "build-tools;35.0.1" "build-tools;34.0.0"
       - name: Write gradle.properties additions
         run: |
           echo "YOUTUBE_API_KEY=${{ secrets.YOUTUBE_API_KEY }}" >> gradle.properties
