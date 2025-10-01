@@ -27,17 +27,14 @@ jobs:
       - name: Write gradle.properties additions
         run: |
           echo "YOUTUBE_API_KEY=${{ secrets.YOUTUBE_API_KEY }}" >> gradle.properties
-        working-directory: android-youtube-top
       - name: Unit tests (core)
         run: gradle :core:test --no-daemon
-        working-directory: android-youtube-top
       - name: Build
         run: gradle :app:assembleDebug
-        working-directory: android-youtube-top
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: app-debug
-          path: android-youtube-top/app/build/outputs/apk/debug/app-debug.apk
+          path: app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 7
