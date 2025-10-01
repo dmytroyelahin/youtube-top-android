@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">YouTube Top</string>
+    <string name="filters">Filters</string>
+    <string name="min_views">Min views</string>
+    <string name="min_subscribers">Min subscribers</string>
+    <string name="created_after">Channel created after</string>
+    <string name="apply">Apply</string>
+    <string name="clear">Clear</string>
+</resources>
