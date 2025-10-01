@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -19,9 +21,15 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
         with:
           gradle-version: 8.7
+      - name: Install Android SDK components
+        run: |
+          sdkmanager --install "platform-tools" "platforms;android-35" "build-tools;35.0.0"
       - name: Write gradle.properties additions
         run: |
           echo "YOUTUBE_API_KEY=${{ secrets.YOUTUBE_API_KEY }}" >> gradle.properties
+        working-directory: android-youtube-top
+      - name: Unit tests (core)
+        run: gradle :core:test --no-daemon
         working-directory: android-youtube-top
       - name: Build
         run: gradle :app:assembleDebug
